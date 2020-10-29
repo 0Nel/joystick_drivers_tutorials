@@ -35,14 +35,14 @@
 
 import roslib; roslib.load_manifest('turtle_teleop')
 import rospy
-import turtlesim 
-import sensor_msgs
+import geometry_msgs.msg
+import sensor_msgs.msg
 
 
 def joy_cb(joy):
-  vel = turtlesim.msg.Velocity()
-  vel.angular = a_scale*joy.axes[angular];
-  vel.linear = l_scale*joy.axes[linear];
+  vel = geometry_msgs.msg.Twist()
+  vel.angular.z = a_scale*joy.axes[angular];
+  vel.linear.x = l_scale*joy.axes[linear];
   pub.publish(vel);
 
 if __name__ == '__main__':
@@ -56,6 +56,6 @@ if __name__ == '__main__':
   a_scale = rospy.get_param('scale_angular', 2.0)
   
   sub = rospy.Subscriber("joy", sensor_msgs.msg.Joy, joy_cb)
-  pub = rospy.Publisher("turtle1/command_velocity", turtlesim.msg.Velocity)
+  pub = rospy.Publisher("turtle1/cmd_vel", geometry_msgs.msg.Twist, queue_size=10)
 
   rospy.spin()
