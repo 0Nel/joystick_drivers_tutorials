@@ -1,0 +1,40 @@
+<package>
+  <name>turtle_teleop</name>
+  <version>0.0.1</version>
+  <description>
+    turtle_teleop is a simple package to demonstrate how to write a teleoperation node in ROS using the turtlesim.
+  </description>
+  <license>BSD</license>
+
+  <maintainer email="melonee@meloneewise.com">Melonee Wise</maintainer>
+
+  <url type="website">http://ros.org/wiki/turtle_teleop</url>
+  <url type="bugtracker">https://github.com/ros-drivers/joystick_drivers_tutorials/issues</url>
+  <url type="repository">https://github.com/ros-drivers/joystick_drivers_tutorials/tree/master/turtle_teleop</url>
+  <author>Melonee Wise</author>
+  <author email="melonee@meloneewise.com">Melonee Wise</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <build_depend>roscpp</build_depend>
+  <build_depend>rospy</build_depend>
+  <build_depend>turtlesim</build_depend>
+  <build_depend>ps3joy</build_depend>
+  <build_depend>joy</build_depend>
+  <build_depend>wiimote</build_depend>
+  <build_depend>spacenav_node</build_depend>
+  <build_depend>geometry_msgs</build_depend>
+  <build_depend>sensor_msgs</build_depend>
+
+  <run_depend>roscpp</run_depend>
+  <run_depend>rospy</run_depend>
+  <run_depend>turtlesim</run_depend>
+  <run_depend>ps3joy</run_depend>
+  <run_depend>joy</run_depend>
+  <run_depend>wiimote</run_depend>
+  <run_depend>spacenav_node</run_depend>
+  <run_depend>geometry_msgs</run_depend>
+  <run_depend>sensor_msgs</run_depend>
+</package>
+
+

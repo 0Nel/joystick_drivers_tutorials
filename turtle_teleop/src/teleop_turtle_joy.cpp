@@ -1,8 +1,8 @@
 // %Tag(FULL)%
 // %Tag(INCLUDE)%
 #include <ros/ros.h>
-#include <turtlesim/Velocity.h>
 #include <sensor_msgs/Joy.h>
+#include <geometry_msgs/Twist.h>
 // %EndTag(INCLUDE)%
 // %Tag(CLASSDEF)%
 class TeleopTurtle
@@ -34,7 +34,7 @@ TeleopTurtle::TeleopTurtle():
   nh_.param("scale_linear", l_scale_, l_scale_);
 // %EndTag(PARAMS)%
 // %Tag(PUB)%
-  vel_pub_ = nh_.advertise<turtlesim::Velocity>("turtle1/command_velocity", 1);
+  vel_pub_ = nh_.advertise<geometry_msgs::Twist>("turtle1/cmd_vel", 1);
 // %EndTag(PUB)%
 // %Tag(SUB)%
   joy_sub_ = nh_.subscribe<sensor_msgs::Joy>("joy", 10, &TeleopTurtle::joyCallback, this);
@@ -43,9 +43,9 @@ TeleopTurtle::TeleopTurtle():
 // %Tag(CALLBACK)%
 void TeleopTurtle::joyCallback(const sensor_msgs::Joy::ConstPtr& joy)
 {
-  turtlesim::Velocity vel;
-  vel.angular = a_scale_*joy->axes[angular_];
-  vel.linear = l_scale_*joy->axes[linear_];
+  geometry_msgs::Twist vel;
+  vel.angular.z = a_scale_*joy->axes[angular_];
+  vel.linear.x = l_scale_*joy->axes[linear_];
   vel_pub_.publish(vel);
 }
 // %EndTag(CALLBACK)%
